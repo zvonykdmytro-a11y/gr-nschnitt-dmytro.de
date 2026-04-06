@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grünschnitt – Gartenpflege</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Open Sans', sans-serif; margin: 0; background: #f4f4f4; color: #333; }
+
+    .hero {
+      background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/...') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      max-width: 160px;
+      margin-bottom: 15px;
+    }
+
+    section { padding: 40px; max-width: 900px; margin: auto; }
+
+    h2 { color: #2e7d32; font-weight: 600; }
+    h3 { font-weight: 600; }
+    p { font-weight: 400; }
+
+    .btn { display: inline-block; padding: 12px 22px; background: #2e7d32; color: white; text-decoration: none; border-radius: 6px; margin: 5px; }
+    .btn.whatsapp { background: #25D366; }
+
+    .card { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+    footer { background: #333; color: white; text-align: center; padding: 15px; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <!-- ЛОГО ВМЕСТО ТЕКСТА -->
+    <img src="logo.png" alt="Grünschnitt Logo" class="logo">
+
+    <p>Professionelle Garten- und Rasenpflege in Offenau</p>
+    <a class="btn" href="#kontakt">Jetzt kontaktieren</a>
+    <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank">WhatsApp schreiben</a>
+  </div>
+</div>
+
+<section>
+  <h2>Unsere Leistungen</h2>
+
+  <div class="card">
+    <h3>Monatliche Pflege</h3>
+    <p>Regelmäßige und zuverlässige Pflege für einen schönen und gepflegten Garten. Perfekt, wenn Ihr Garten immer ordentlich aussehen soll. Wir arbeiten mit einem individuellen Ansatz für jeden Garten und bieten faire Preise, die unter dem Marktdurchschnitt liegen.</p>
+  </div>
+
+  <div class="card">
+    <h3>Einmaliger Service</h3>
+    <p>Schnelle und gründliche Gartenpflege – ideal, wenn Ihr Garten kurzfristig wieder in einen gepflegten Zustand gebracht werden soll. Jeder Auftrag wird individuell angepasst und sauber ausgeführt.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Über uns</h2>
+  <p>Wir sind ein kleines Familienunternehmen, gegründet von zwei Brüdern, die ihre Leidenschaft für Gartenarbeit zum Beruf gemacht haben. Wir arbeiten gerne im Freien und wissen genau, worauf es bei der Pflege von Gärten und Pflanzen ankommt. Mit Erfahrung, Sorgfalt und einem Auge fürs Detail sorgen wir dafür, dass Ihr Garten stets gepflegt und einladend aussieht. Zuverlässig, fair und mit Leidenschaft – das ist unser Anspruch.</p>
+</section>
+
+<section id="kontakt">
+  <h2>Kontakt</h2>
+  <p>📍 Offenau</p>
+  <p>📞 +49 160 4220591</p>
+  <p>📧 Email: zvonykdmytro@gmail.com</p>
+  <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank">Über WhatsApp kontaktieren</a>
+</section>
+
+<footer>
+  <p>© 2026 Grünschnitt</p>
+</footer>
+
+</body>
+</html>
