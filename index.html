@@ -14,79 +14,50 @@
     margin: 0;
     background: #fff;
     color: #222;
-    scroll-behavior: smooth;
   }
-
-  /* Fixed header */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 40px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  header .logo {
-    max-width: 160px;
-  }
-  header nav a {
-    margin-left: 20px;
-    color: #222;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  header nav a:hover { color: #2e7d32; }
 
   /* Hero */
   .hero {
     background: url('grass.jpg') center/cover no-repeat;
-    height: 500px;
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
     position: relative;
-    margin-top: 60px;
   }
   .hero::after {
     content: "";
     position: absolute;
     inset:0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.35);
   }
   .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .hero-content .logo {
-    max-width: 300px;
+    max-width: 350px;
     transition: transform 1s ease;
   }
 
-  /* Sections */
   section {
-    padding: 70px 20px 50px;
+    padding: 60px 20px;
     max-width: 1000px;
     margin: auto;
   }
+
   h2 {
     color: #2e7d32;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
-  /* Service cards */
+  /* Services */
   .services {
     display: flex;
     flex-wrap: wrap;
@@ -100,20 +71,13 @@
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     text-align: center;
-    transition: transform .5s ease, opacity .5s ease;
     cursor: pointer;
+    transition: transform .5s ease, opacity .5s ease;
     opacity: 0;
     transform: translateY(30px);
   }
-  .card.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .card i {
-    font-size: 40px;
-    color: #2e7d32;
-    margin-bottom: 12px;
-  }
+  .card.show { opacity: 1; transform: translateY(0); }
+  .card i { font-size: 40px; color: #2e7d32; margin-bottom: 12px; }
   .card h3 { font-size: 22px; color: #2a6626; margin-bottom: 12px; }
   .card p { font-size: 15px; line-height: 1.6; }
 
@@ -134,15 +98,8 @@
     opacity: 0;
     transform: translateY(30px);
   }
-  .advantage.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .advantage i {
-    font-size: 36px;
-    color: #2e7d32;
-    margin-bottom: 10px;
-  }
+  .advantage.show { opacity: 1; transform: translateY(0); }
+  .advantage i { font-size: 36px; color: #2e7d32; margin-bottom: 10px; }
 
   /* Testimonials */
   .testimonials {
@@ -172,25 +129,12 @@
     text-align: right;
   }
 
-  /* Contact Form */
-  form {
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  /* Contact Info */
+  #kontakt {
+    text-align: center;
   }
-  input, textarea {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    width: 100%;
-  }
-  textarea { resize: vertical; min-height: 120px; }
-  form button { width: fit-content; }
+  #kontakt p { margin: 8px 0; font-size: 16px; }
 
-  /* Footer */
   footer {
     background: #222;
     color: white;
@@ -200,23 +144,14 @@
   }
 
   /* Responsive */
-  @media(max-width:768px) {
+  @media(max-width:768px){
     .services, .advantages { flex-direction: column; align-items: center; }
     .hero-content .logo { max-width: 220px; }
-    header { padding: 10px 20px; }
   }
 </style>
 </head>
 
 <body>
-
-<header>
-  <img src="logo.png" alt="Grünschnitt Logo" class="logo">
-  <nav>
-    <a href="#services">Leistungen</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-</header>
 
 <!-- Hero -->
 <div class="hero">
@@ -227,7 +162,7 @@
 
 <!-- Services -->
 <section id="services">
-  <h2>Was wir anbieten</h2>
+  <h2>Unsere Leistungen</h2>
   <div class="services">
     <div class="card" onclick="location.href='mailto:zvonykdmytro@gmail.com?subject=Monatliche Gartenpflege'">
       <i class="fas fa-seedling"></i>
@@ -243,6 +178,11 @@
       <i class="fas fa-water"></i>
       <h3>Rasen & Grünflächen</h3>
       <p>Rasenschnitt, Vertikutieren & Aufbereitung – für dichten, grünen Rasen.</p>
+    </div>
+    <div class="card" onclick="location.href='mailto:zvonykdmytro@gmail.com?subject=Pflanzen an jedem Ort setzen'">
+      <i class="fas fa-leaf"></i>
+      <h3>Pflanzen an jedem Ort setzen</h3>
+      <p>Wir pflanzen jedes gewünschte Gewächs an jedem Ort – kreativ und zuverlässig.</p>
     </div>
   </div>
 </section>
@@ -284,22 +224,12 @@
   </div>
 </section>
 
-<!-- Contact Form -->
+<!-- Kontakt Info -->
 <section id="kontakt">
   <h2>Kontakt</h2>
   <p>📍 Offenau</p>
   <p>📞 +49 160 4220591</p>
   <p>📧 zvonykdmytro@gmail.com</p>
-
-  <form>
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="tel" placeholder="Telefon" required>
-    <textarea placeholder="Ihre Nachricht..." required></textarea>
-    <button class="btn" type="submit">Absenden</button>
-  </form>
-
-  <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank" style="margin-top:15px;">Über WhatsApp schreiben</a>
 </section>
 
 <footer>
@@ -307,7 +237,7 @@
 </footer>
 
 <script>
-  // Анимация при скролле
+  // Анимация появления блоков
   const cards = document.querySelectorAll('.card');
   const advantages = document.querySelectorAll('.advantage');
 
