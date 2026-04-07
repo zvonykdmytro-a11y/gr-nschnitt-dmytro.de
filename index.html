@@ -14,61 +14,68 @@
     margin: 0;
     background: #fff;
     color: #222;
+    scroll-behavior: smooth;
   }
+
+  /* Fixed header */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  header .logo {
+    max-width: 160px;
+  }
+  header nav a {
+    margin-left: 20px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  header nav a:hover { color: #2e7d32; }
 
   /* Hero */
   .hero {
     background: url('grass.jpg') center/cover no-repeat;
-    height: 450px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     position: relative;
+    margin-top: 60px;
   }
   .hero::after {
     content: "";
     position: absolute;
     inset:0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.4);
   }
   .hero-content {
     position: relative;
     z-index: 1;
     max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .hero-content .logo {
-    max-width: 160px;
-    margin-bottom: 20px;
+    max-width: 300px;
+    transition: transform 1s ease;
   }
-  .hero h1 {
-    font-size: 42px;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
-  .hero p {
-    font-size: 20px;
-    margin-bottom: 25px;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 14px 24px;
-    background: #2e7d32;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    margin: 4px;
-    transition: .3s ease;
-  }
-  .btn:hover { background: #276727; }
-  .btn.whatsapp { background: #25D366; }
 
   /* Sections */
   section {
-    padding: 50px 20px;
+    padding: 70px 20px 50px;
     max-width: 1000px;
     margin: auto;
   }
@@ -93,11 +100,14 @@
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     text-align: center;
-    transition: .3s ease;
+    transition: transform .5s ease, opacity .5s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  .card.show {
+    opacity: 1;
+    transform: translateY(0);
   }
   .card i {
     font-size: 40px;
@@ -120,6 +130,13 @@
     background: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
+    transition: transform .5s ease, opacity .5s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .advantage.show {
+    opacity: 1;
+    transform: translateY(0);
   }
   .advantage i {
     font-size: 36px;
@@ -185,22 +202,26 @@
   /* Responsive */
   @media(max-width:768px) {
     .services, .advantages { flex-direction: column; align-items: center; }
-    .hero h1 { font-size: 32px; }
-    .hero p { font-size: 18px; }
+    .hero-content .logo { max-width: 220px; }
+    header { padding: 10px 20px; }
   }
 </style>
 </head>
 
 <body>
 
+<header>
+  <img src="logo.png" alt="Grünschnitt Logo" class="logo">
+  <nav>
+    <a href="#services">Leistungen</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
 <!-- Hero -->
 <div class="hero">
   <div class="hero-content">
     <img src="logo.png" alt="Grünschnitt Logo" class="logo">
-    <h1>Professionelle Gartenpflege in Offenau</h1>
-    <p>Schöne Gärten durch zuverlässige Pflege & Leidenschaft 🌿</p>
-    <a class="btn" href="#services">Unsere Leistungen</a>
-    <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank">WhatsApp jetzt</a>
   </div>
 </div>
 
@@ -208,17 +229,17 @@
 <section id="services">
   <h2>Was wir anbieten</h2>
   <div class="services">
-    <div class="card">
+    <div class="card" onclick="location.href='mailto:zvonykdmytro@gmail.com?subject=Monatliche Gartenpflege'">
       <i class="fas fa-seedling"></i>
       <h3>Monatliche Gartenpflege</h3>
       <p>Regelmäßiges Mähen, Schnittarbeiten und Pflege – für dauerhaft schöne Grünflächen.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="location.href='mailto:zvonykdmytro@gmail.com?subject=Einmaliger Service'">
       <i class="fas fa-tree"></i>
       <h3>Einmaliger Service</h3>
       <p>Schnelle & gründliche Gartenpflege – perfekt für den Frischekick zwischendurch.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="location.href='mailto:zvonykdmytro@gmail.com?subject=Rasen & Grünflächen'">
       <i class="fas fa-water"></i>
       <h3>Rasen & Grünflächen</h3>
       <p>Rasenschnitt, Vertikutieren & Aufbereitung – für dichten, grünen Rasen.</p>
@@ -265,7 +286,7 @@
 
 <!-- Contact Form -->
 <section id="kontakt">
-  <h2>Kontakt aufnehmen</h2>
+  <h2>Kontakt</h2>
   <p>📍 Offenau</p>
   <p>📞 +49 160 4220591</p>
   <p>📧 zvonykdmytro@gmail.com</p>
@@ -284,6 +305,23 @@
 <footer>
   <p>© 2026 Grünschnitt</p>
 </footer>
+
+<script>
+  // Анимация при скролле
+  const cards = document.querySelectorAll('.card');
+  const advantages = document.querySelectorAll('.advantage');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+  advantages.forEach(adv => observer.observe(adv));
+</script>
 
 </body>
 </html>
