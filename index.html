@@ -1,137 +1,284 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grünschnitt – Gartenpflege</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grünschnitt – Gartenpflege Offenau</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #222;
+  }
 
-    .hero {
-      background: url('grass.jpg') center/cover no-repeat;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
+  /* Hero */
+  .hero {
+    background: url('grass.jpg') center/cover no-repeat;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset:0;
+    background: rgba(0,0,0,0.5);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+  .hero-content .logo {
+    max-width: 160px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-    }
+  .btn {
+    display: inline-block;
+    padding: 14px 24px;
+    background: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    margin: 4px;
+    transition: .3s ease;
+  }
+  .btn:hover { background: #276727; }
+  .btn.whatsapp { background: #25D366; }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
+  /* Sections */
+  section {
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  h2 {
+    color: #2e7d32;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-    .logo {
-      max-width: 160px;
-      margin-bottom: 15px;
-    }
+  /* Service cards */
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .card {
+    background: #fefefe;
+    width: 300px;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: .3s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
+  .card i {
+    font-size: 40px;
+    color: #2e7d32;
+    margin-bottom: 12px;
+  }
+  .card h3 { font-size: 22px; color: #2a6626; margin-bottom: 12px; }
+  .card p { font-size: 15px; line-height: 1.6; }
 
-    section {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-    }
+  /* Warum wir? */
+  .advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .advantage {
+    flex: 1 1 220px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .advantage i {
+    font-size: 36px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+  }
 
-    h2 {
-      color: #2e7d32;
-      font-weight: 600;
-    }
+  /* Testimonials */
+  .testimonials {
+    background: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 8px;
+  }
+  .testimonial {
+    font-style: italic;
+    margin: 12px 0;
+    position: relative;
+    padding-left: 30px;
+  }
+  .testimonial::before {
+    content: "“";
+    font-size: 32px;
+    position: absolute;
+    left: 0;
+    top: -8px;
+    color: #2e7d32;
+  }
+  .testimonial span {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+  }
 
-    h3 {
-      font-weight: 600;
-    }
+  /* Contact Form */
+  form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  input, textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    width: 100%;
+  }
+  textarea { resize: vertical; min-height: 120px; }
+  form button { width: fit-content; }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      background: #2e7d32;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      margin: 5px;
-    }
+  /* Footer */
+  footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 18px 6px;
+    font-size: 14px;
+  }
 
-    .btn.whatsapp {
-      background: #25D366;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+  /* Responsive */
+  @media(max-width:768px) {
+    .services, .advantages { flex-direction: column; align-items: center; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 18px; }
+  }
+</style>
 </head>
 
 <body>
 
+<!-- Hero -->
 <div class="hero">
   <div class="hero-content">
-
     <img src="logo.png" alt="Grünschnitt Logo" class="logo">
-
-    <p>Professionelle Garten- und Rasenpflege in Offenau</p>
-
-    <a class="btn" href="#kontakt">Jetzt kontaktieren</a>
-    <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank">WhatsApp schreiben</a>
-
+    <h1>Professionelle Gartenpflege in Offenau</h1>
+    <p>Schöne Gärten durch zuverlässige Pflege & Leidenschaft 🌿</p>
+    <a class="btn" href="#services">Unsere Leistungen</a>
+    <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank">WhatsApp jetzt</a>
   </div>
 </div>
 
-<section>
-  <h2>Unsere Leistungen</h2>
-
-  <div class="card">
-    <h3>Monatliche Pflege</h3>
-    <p>Regelmäßige und zuverlässige Pflege für einen schönen und gepflegten Garten. Wir arbeiten individuell und bieten faire Preise.</p>
-  </div>
-
-  <div class="card">
-    <h3>Einmaliger Service</h3>
-    <p>Schnelle und gründliche Gartenpflege – ideal, wenn Ihr Garten wieder gepflegt aussehen soll.</p>
+<!-- Services -->
+<section id="services">
+  <h2>Was wir anbieten</h2>
+  <div class="services">
+    <div class="card">
+      <i class="fas fa-seedling"></i>
+      <h3>Monatliche Gartenpflege</h3>
+      <p>Regelmäßiges Mähen, Schnittarbeiten und Pflege – für dauerhaft schöne Grünflächen.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-tree"></i>
+      <h3>Einmaliger Service</h3>
+      <p>Schnelle & gründliche Gartenpflege – perfekt für den Frischekick zwischendurch.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-water"></i>
+      <h3>Rasen & Grünflächen</h3>
+      <p>Rasenschnitt, Vertikutieren & Aufbereitung – für dichten, grünen Rasen.</p>
+    </div>
   </div>
 </section>
 
+<!-- Warum wir? -->
 <section>
-  <h2>Über uns</h2>
-  <p>Wir sind ein Familienunternehmen von zwei Brüdern mit Leidenschaft für Gartenarbeit. Qualität, Zuverlässigkeit und ein perfektes Ergebnis stehen bei uns an erster Stelle.</p>
+  <h2>Warum wir?</h2>
+  <div class="advantages">
+    <div class="advantage">
+      <i class="fas fa-handshake"></i>
+      <h3>Zuverlässig</h3>
+      <p>Wir halten Termine ein und liefern konstant hochwertige Arbeit.</p>
+    </div>
+    <div class="advantage">
+      <i class="fas fa-star"></i>
+      <h3>Professionell</h3>
+      <p>Erfahrung & Leidenschaft für jeden Garten – Qualität ist unser Anspruch.</p>
+    </div>
+    <div class="advantage">
+      <i class="fas fa-check-circle"></i>
+      <h3>Transparent</h3>
+      <p>Faire Preise ohne versteckte Kosten. Alles klar & verständlich für unsere Kunden.</p>
+    </div>
+  </div>
 </section>
 
+<!-- Testimonials -->
+<section>
+  <h2>Das sagen unsere Kunden</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      „Sehr zuverlässige Gartenpflege – unser Garten sieht besser aus als je zuvor!“
+      <span>– Familie Meier</span>
+    </div>
+    <div class="testimonial">
+      „Top Service, faire Preise und super Kommunikation!“
+      <span>– Herr Becker</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
 <section id="kontakt">
-  <h2>Kontakt</h2>
+  <h2>Kontakt aufnehmen</h2>
   <p>📍 Offenau</p>
   <p>📞 +49 160 4220591</p>
-  <p>📧 Email: zvonykdmytro@gmail.com</p>
-  <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank">Über WhatsApp kontaktieren</a>
+  <p>📧 zvonykdmytro@gmail.com</p>
+
+  <form>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="tel" placeholder="Telefon" required>
+    <textarea placeholder="Ihre Nachricht..." required></textarea>
+    <button class="btn" type="submit">Absenden</button>
+  </form>
+
+  <a class="btn whatsapp" href="https://wa.me/491604220591" target="_blank" style="margin-top:15px;">Über WhatsApp schreiben</a>
 </section>
 
 <footer>
