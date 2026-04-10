@@ -9,14 +9,19 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
+*{
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   background: #fff;
   color: #222;
+  overflow-x: hidden;
 }
 
-/* Hero */
+/* HERO */
 .hero {
   height: 550px;
   display: flex;
@@ -29,120 +34,147 @@ body {
   content: "";
   position: absolute;
   inset:0;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.25);
 }
 .hero-content {
   position: relative;
   z-index: 1;
 }
 .logo {
-  max-width: 350px;
+  max-width: 320px;
   border-radius: 15px;
 }
 
-/* Sections */
+/* SECTIONS */
 section {
   padding: 60px 20px;
   max-width: 1100px;
   margin: auto;
 }
+
 h2 {
   color: #2e7d32;
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* Services */
+/* SERVICES GRID 2x2 */
 .services {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  justify-content: center;
 }
+
 .card {
   background: #f0fff4;
-  width: 300px;
   padding: 22px;
   border-radius: 15px;
   text-align: center;
   cursor: pointer;
-  transition: .3s;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .6s ease;
 }
-.card:hover { transform: scale(1.05); }
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
 .card i {
   font-size: 40px;
   color: #81c784;
+  margin-bottom: 10px;
 }
 
-/* Advantages */
+/* WHY US */
 .advantages {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
 .advantage {
+  flex: 1 1 250px;
   background: #e8f5e9;
   padding: 20px;
   border-radius: 12px;
-  width: 250px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .6s ease;
   text-align: center;
 }
-.advantage i {
-  font-size: 36px;
-  margin-bottom: 10px;
+
+.advantage.show {
+  opacity: 1;
+  transform: translateY(0);
 }
+
 .adv1 i { color: #66bb6a; }
 .adv2 i { color: #ffa726; }
 .adv3 i { color: #43a047; }
 
-/* ABOUT */
-.about-container {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-.about-text {
-  flex: 1 1 500px;
-}
-.about-text p {
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
-
-/* Фото + контакты */
-.about-images {
-  flex: 1 1 300px;
-  display: flex;
-  gap: 20px;
-}
-.person {
-  text-align: center;
-}
-.person img {
-  width: 100%;
-  border-radius: 12px;
+.advantage i {
+  font-size: 36px;
   margin-bottom: 10px;
 }
-.person p {
-  margin: 4px 0;
-  font-size: 14px;
-}
 
-/* Testimonials */
+/* TESTIMONIALS */
 .testimonials {
   background: #f1f8e9;
   padding: 40px;
   border-radius: 12px;
 }
 
-/* Kontakt */
+/* ABOUT FIX RESPONSIVE */
+.about-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.about-text {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.about-text p {
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+/* IMAGES */
+.about-images {
+  display: flex;
+  gap: 20px;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+}
+
+.person {
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+.person img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* CONTACT */
 .kontakt-left p {
   margin: 8px 0;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   background: #222;
   color: white;
@@ -150,10 +182,24 @@ footer {
   padding: 15px;
 }
 
-/* Responsive */
+/* MOBILE FIX */
 @media(max-width:768px){
-  .services, .advantages { flex-direction: column; align-items: center; }
-  .about-container { flex-direction: column; }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .about-text {
+    font-size: 15px;
+  }
+
+  .person {
+    flex: 1 1 100%;
+  }
+
+  .hero {
+    height: 420px;
+  }
 }
 </style>
 </head>
@@ -169,31 +215,49 @@ footer {
 <section>
   <h2>Unsere Leistungen</h2>
   <div class="services">
-    <div class="card"><i class="fas fa-seedling"></i><h3>Monatliche Gartenpflege</h3></div>
-    <div class="card"><i class="fas fa-tree"></i><h3>Einmaliger Service</h3></div>
-    <div class="card"><i class="fas fa-water"></i><h3>Rasenpflege</h3></div>
-    <div class="card"><i class="fas fa-leaf"></i><h3>Bepflanzung</h3></div>
+
+    <div class="card">
+      <i class="fas fa-seedling"></i>
+      <h3>Monatliche Pflege</h3>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-tree"></i>
+      <h3>Einmaliger Service</h3>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-water"></i>
+      <h3>Rasenpflege</h3>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-leaf"></i>
+      <h3>Bepflanzung</h3>
+    </div>
+
   </div>
 </section>
 
 <section>
   <h2>Warum wir?</h2>
   <div class="advantages">
+
     <div class="advantage adv1">
       <i class="fas fa-star"></i>
       <h3>Qualität</h3>
-      <p>Saubere und präzise Arbeit</p>
     </div>
+
     <div class="advantage adv2">
       <i class="fas fa-handshake"></i>
       <h3>Zuverlässig</h3>
-      <p>Termine werden eingehalten</p>
     </div>
+
     <div class="advantage adv3">
       <i class="fas fa-check-circle"></i>
       <h3>Erfahrung</h3>
-      <p>Leidenschaft für jeden Garten</p>
     </div>
+
   </div>
 </section>
 
@@ -207,35 +271,42 @@ footer {
 
 <section>
   <h2>Über uns</h2>
+
   <div class="about-container">
 
     <div class="about-text">
       <p><strong>Wir sind zwei Brüder aus Offenau – und Gärten sind unsere Leidenschaft.</strong></p>
+
       <p>Was als gemeinsame Idee begann, ist heute ein junges Unternehmen mit einem klaren Anspruch: Außenanlagen nicht nur zu pflegen, sondern sie dauerhaft in einem Zustand zu halten, auf den Sie stolz sein können.</p>
+
       <p>Wir arbeiten sorgfältig, zuverlässig und mit echtem Engagement – denn für uns ist jeder Garten ein Vertrauensprojekt.</p>
+
       <p><strong>Unsere Leistungen:</strong></p>
+
       <p>
-      • Fachgerechtes Rasenmähen<br>
-      • Regelmäßige Rasenpflege im 10-Tage-Rhythmus<br>
-      • Individuelle Bepflanzung nach Ihren Wünschen<br>
-      • Einmaliger Komplettservice mit Bodenanalyse und Rundum-Pflege
+        • Fachgerechtes Rasenmähen<br>
+        • Regelmäßige Pflege im 10-Tage-Rhythmus<br>
+        • Individuelle Bepflanzung<br>
+        • Komplettservice mit Bodenanalyse
       </p>
-      <p>Sie haben eine Vorstellung – wir machen daraus Realität. Präzise, sauber und termingerecht.</p>
-      <p><strong>Sprechen Sie uns an – wir freuen uns auf Ihren Garten.</strong></p>
+
+      <p>Sie haben eine Vorstellung – wir machen daraus Realität.</p>
     </div>
 
     <div class="about-images">
+
       <div class="person">
         <img src="dmytro.png">
-        <p><strong>+49 160 4220591</strong></p>
+        <p>+49 160 4220591</p>
         <p>zvonykdmytro@gmail.com</p>
       </div>
 
       <div class="person">
         <img src="vadym.png">
-        <p><strong>+49 160 5720591</strong></p>
+        <p>+49 160 5720591</p>
         <p>zvonykvadym@gmail.com</p>
       </div>
+
     </div>
 
   </div>
@@ -253,6 +324,20 @@ footer {
 <footer>
   <p>© 2026 Grünschnitt</p>
 </footer>
+
+<script>
+const items = document.querySelectorAll('.card, .advantage');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+items.forEach(i => observer.observe(i));
+</script>
 
 </body>
 </html>
